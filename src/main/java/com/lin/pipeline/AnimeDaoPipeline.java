@@ -17,7 +17,7 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 @Component("AnimeDaoPipeline")
 public class AnimeDaoPipeline implements Pipeline {
 
-	@Resource
+	@Resource(name="animeMapper")
 	private AnimeMapper animeMapper;
 	
 	public AnimeDaoPipeline() {}
