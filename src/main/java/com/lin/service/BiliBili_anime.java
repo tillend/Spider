@@ -3,8 +3,9 @@ package com.lin.service;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
-import com.lin.model.AnimeListModel;
+import com.lin.vo.AnimeListVO;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -39,7 +40,7 @@ public class BiliBili_anime implements PageProcessor {
 		List<String> watch_count = page.getHtml().xpath("//span[@class='b-icon b-icon-v-play']/tidyText()").all();
 		List<String> dm_count = page.getHtml().xpath("//span[@class='b-icon b-icon-v-dm']/tidyText()").all();
 		
-		AnimeListModel animeListModel = new AnimeListModel();
+		AnimeListVO animeListModel = new AnimeListVO();
 		animeListModel.setTitle(title);
 		animeListModel.setUrl(url);
 		animeListModel.setDesc(desc);

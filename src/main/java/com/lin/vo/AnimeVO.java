@@ -1,4 +1,4 @@
-package com.lin.model;
+package com.lin.vo;
 
 /**
  * bilibili已完结动漫合集Model
@@ -6,7 +6,7 @@ package com.lin.model;
  * @author god
  *
  */
-public class AnimeModel {
+public class AnimeVO {
 	// 徽章?
 	private boolean badgepay;
 	// 播放数

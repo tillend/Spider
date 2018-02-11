@@ -11,7 +11,7 @@ import com.lin.utils.TranscodeUtil;
 
 public class TranscodeUtilTest {
 	
-
+	@Ignore
 	@Test
 	public void test() throws UnsupportedEncodingException {
 		String beforeTran = "\\u3010\\u5408\\u96c6\\u3011\\u9ed1\\u6267\\u4e8b\\u3010\\u72ec\\u5bb6\\u6b63\\u7248\\u3011";

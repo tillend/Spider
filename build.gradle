@@ -41,6 +41,9 @@ dependencies {
 
     // Use JUnit test framework
     compile 'junit:junit:4.12'
+    
+    //dozer
+    //compile 'net.sf.dozer:dozer:5.5.1'
 }
 
 sourceSets {
@@ -60,5 +63,10 @@ sourceSets {
             srcDirs = ['src/test/resources']
         }
     }
+}
+
+//编译JAVA文件时采用UTF-8
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
 }
 

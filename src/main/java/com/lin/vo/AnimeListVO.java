@@ -1,8 +1,8 @@
-package com.lin.model;
+package com.lin.vo;
 
 import java.util.List;
 
-public class AnimeListModel {
+public class AnimeListVO {
 	
 	private List<String> title;
 	private List<String> url;
