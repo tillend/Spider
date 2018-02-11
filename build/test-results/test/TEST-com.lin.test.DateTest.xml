@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.lin.test.DateTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2018-02-11T12:33:44" hostname="LIN" time="0.02">
+  <properties/>
+  <testcase name="string2DateTest" classname="com.lin.test.DateTest" time="0.019"/>
+  <testcase name="test" classname="com.lin.test.DateTest" time="0.001">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[Wed Jan 31 18:23:54 CST 2018
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

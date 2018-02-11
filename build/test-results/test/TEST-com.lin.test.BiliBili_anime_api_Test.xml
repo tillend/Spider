@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.lin.test.BiliBili_anime_api_Test" tests="3" skipped="3" failures="0" errors="0" timestamp="2018-02-11T12:33:38" hostname="LIN" time="0.001">
+  <properties/>
+  <testcase name="test4all" classname="com.lin.test.BiliBili_anime_api_Test" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="test4api" classname="com.lin.test.BiliBili_anime_api_Test" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="testMybatis" classname="com.lin.test.BiliBili_anime_api_Test" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

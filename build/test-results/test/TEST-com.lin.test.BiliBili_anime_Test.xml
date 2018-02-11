@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.lin.test.BiliBili_anime_Test" tests="2" skipped="1" failures="0" errors="0" timestamp="2018-02-11T12:33:38" hostname="LIN" time="6.169">
+  <properties/>
+  <testcase name="test4api" classname="com.lin.test.BiliBili_anime_Test" time="6.168"/>
+  <testcase name="test4process" classname="com.lin.test.BiliBili_anime_Test" time="0.001">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[[20:33:38:650] [INFO] - us.codecraft.webmagic.Spider.run(Spider.java:306) - Spider bilibili.com started!
+[20:33:39:208] [INFO] - us.codecraft.webmagic.downloader.HttpClientDownloader.download(HttpClientDownloader.java:88) - downloading page success https://s.search.bilibili.com/cate/search?main_ver=v3&search_type=video&view_type=hot_rank&cate_id=32&page=1&pagesize=20&jsonp=jsonp&time_from=20171201&time_to=20180208
+[20:33:44:342] [INFO] - us.codecraft.webmagic.Spider.run(Spider.java:338) - Spider bilibili.com closed! 1 pages downloaded.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
