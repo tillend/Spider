@@ -3,11 +3,14 @@ package com.lin.pipeline;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.lin.dao.AnimeMapper;
 import com.lin.model.Anime;
+import com.lin.utils.ApplicationContextUtil;
 import com.lin.utils.DateUtil;
+import com.lin.utils.StringUtil;
 import com.lin.vo.AnimeVO;
 
 import us.codecraft.webmagic.ResultItems;
@@ -17,8 +20,8 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 @Component("AnimeDaoPipeline")
 public class AnimeDaoPipeline implements Pipeline {
 
-	@Resource(name="animeMapper")
-	private AnimeMapper animeMapper;
+//	@Resource(name="animeMapper")
+//	private AnimeMapper animeMapper;
 	
 	public AnimeDaoPipeline() {}
 
@@ -37,7 +40,7 @@ public class AnimeDaoPipeline implements Pipeline {
 		record.setFavorites(t.getFavorites());
 		record.setMid(t.getMid());
 		record.setPic(t.getPic());
-		record.setPlay(t.getPlay());
+		record.setPlay(StringUtil.long2String(t.getPlay()));
 		record.setPubdate(DateUtil.string2Date(t.getPubdate()));
 		record.setReview(t.getReview());
 		record.setSenddate(t.getSenddate());
@@ -47,6 +50,9 @@ public class AnimeDaoPipeline implements Pipeline {
 		record.setVideoId(t.getId());
 		record.setVideoReview(t.getVideo_review());
 
+		
+		ApplicationContext applicationContext = ApplicationContextUtil.getSingleton().getContext();
+		AnimeMapper animeMapper = applicationContext.getBean(AnimeMapper.class);
 		animeMapper.insert(record);
 		
 	}

@@ -29,10 +29,13 @@ public class BiliBili_anime_api implements PageProcessor {
 		JSONObject dataJson = JSON.parseObject(beforeTran);
 		
 		//获取结果的总页面,继续加入待爬取列表
-		if("-1".equals(dataJson.getString("page"))) {
+		if("1".equals(dataJson.getString("page"))) {
 			int numPages = Integer.parseInt(dataJson.getString("numPages"));
 			for(int i = 2; i <= numPages; i++) {
-				page.addTargetRequest(String.format(page.getUrl() + "&page=%d", i));
+				String url = String.format(page.getUrl() + "&page=%d", i);
+				page.addTargetRequest(url);
+				
+				/* logger */
 			}
 			
 		}
@@ -42,7 +45,7 @@ public class BiliBili_anime_api implements PageProcessor {
 		String video = dataJson.get("result").toString();
 		List<AnimeVO> list = JSON.parseArray(video, AnimeVO.class);
 
-		page.putField("animeList", list.get(0));
+		page.putField("animeList", list);
 
 	}
 

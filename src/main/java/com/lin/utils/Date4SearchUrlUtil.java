@@ -13,7 +13,7 @@ public class Date4SearchUrlUtil {
 	
 	static String originUrl = "https://s.search.bilibili.com/cate/search?"
 			+ "main_ver=v3&search_type=video&view_type=hot_rank"
-			+ "&cate_id=32&page=1&pagesize=40&jsonp=jsonp"
+			+ "&cate_id=32&page=1&pagesize=20&jsonp=jsonp"
 			+ "&time_from=%s&time_to=%s";
 	
 	public static String[] getUrls() {

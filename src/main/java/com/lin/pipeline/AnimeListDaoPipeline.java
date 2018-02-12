@@ -3,26 +3,29 @@ package com.lin.pipeline;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.lin.dao.AnimeMapper;
 import com.lin.model.Anime;
+import com.lin.utils.ApplicationContextUtil;
 import com.lin.utils.DateUtil;
+import com.lin.utils.StringUtil;
 import com.lin.vo.AnimeVO;
 
+import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
-import us.codecraft.webmagic.pipeline.PageModelPipeline;
+import us.codecraft.webmagic.pipeline.Pipeline;
 
 @Component("AnimeListDaoPipeline")
-public class AnimeListDaoPipeline implements PageModelPipeline<List<AnimeVO>> {
+public class AnimeListDaoPipeline implements Pipeline {
 	
-    @Resource
-    private AnimeMapper animeMapper;
+//    @Resource
+//    private AnimeMapper animeMapper;
 
 	@Override
-	public void process(List<AnimeVO> list, Task task) {
+	public void process(ResultItems resultItems, Task task) {
+		List<AnimeVO> list = resultItems.get("animeList");
 		List<Anime> recordList = new ArrayList<>();
 		for(AnimeVO t:list) {
 			//避免使用beanMapper
@@ -36,7 +39,7 @@ public class AnimeListDaoPipeline implements PageModelPipeline<List<AnimeVO>> {
 			record.setFavorites(t.getFavorites());
 			record.setMid(t.getMid());
 			record.setPic(t.getPic());
-			record.setPlay(t.getPlay());
+			record.setPlay(StringUtil.long2String(t.getPlay()));
 			record.setPubdate(DateUtil.string2Date(t.getPubdate()));
 			record.setReview(t.getReview());
 			record.setSenddate(t.getSenddate());
@@ -49,6 +52,8 @@ public class AnimeListDaoPipeline implements PageModelPipeline<List<AnimeVO>> {
 			recordList.add(record);
 		}
 
+		ApplicationContext applicationContext = ApplicationContextUtil.getSingleton().getContext();
+		AnimeMapper animeMapper = applicationContext.getBean(AnimeMapper.class);
 		animeMapper.insertByBatch(recordList);
 		
 		

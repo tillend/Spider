@@ -10,7 +10,7 @@ public class AnimeVO {
 	// 徽章?
 	private boolean badgepay;
 	// 播放数
-	private Long play;
+	private String play;
 	// 描述
 	private String description;
 	// 合集发布日期
@@ -52,11 +52,11 @@ public class AnimeVO {
 		this.badgepay = badgepay;
 	}
 
-	public Long getPlay() {
+	public String getPlay() {
 		return play;
 	}
 
-	public void setPlay(Long play) {
+	public void setPlay(String play) {
 		this.play = play;
 	}
 

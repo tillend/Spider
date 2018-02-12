@@ -3,6 +3,7 @@ package com.lin.model;
 import java.util.Date;
 
 import com.lin.utils.DateUtil;
+import com.lin.utils.StringUtil;
 import com.lin.vo.AnimeVO;
 
 public class Anime {
@@ -197,7 +198,7 @@ public class Anime {
 		record.setFavorites(t.getFavorites());
 		record.setMid(t.getMid());
 		record.setPic(t.getPic());
-		record.setPlay(t.getPlay());
+		record.setPlay(StringUtil.long2String(t.getPlay()));
 		record.setPubdate(DateUtil.string2Date(t.getPubdate()));
 		record.setReview(t.getReview());
 		record.setSenddate(t.getSenddate());
