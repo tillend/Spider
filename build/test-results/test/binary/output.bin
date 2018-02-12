@@ -1,4 +1,0 @@
-j[20:33:38:650] [INFO] - us.codecraft.webmagic.Spider.run(Spider.java:306) - Spider bilibili.com started!
-º[20:33:39:208] [INFO] - us.codecraft.webmagic.downloader.HttpClientDownloader.download(HttpClientDownloader.java:88) - downloading page success https://s.search.bilibili.com/cate/search?main_ver=v3&search_type=video&view_type=hot_rank&cate_id=32&page=1&pagesize=20&jsonp=jsonp&time_from=20171201&time_to=20180208
-}[20:33:44:342] [INFO] - us.codecraft.webmagic.Spider.run(Spider.java:338) - Spider bilibili.com closed! 1 pages downloaded.
-	Wed Jan 31 18:23:54 CST 2018
