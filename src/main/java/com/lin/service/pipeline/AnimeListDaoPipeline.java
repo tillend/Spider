@@ -1,4 +1,4 @@
-package com.lin.pipeline;
+package com.lin.service.pipeline;
 
 import java.util.ArrayList;
 import java.util.List;

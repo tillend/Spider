@@ -1,4 +1,4 @@
-package com.lin.pipeline;
+package com.lin.service.pipeline;
 
 import javax.annotation.Resource;
 

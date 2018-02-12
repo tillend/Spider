@@ -21,5 +21,15 @@ public class DateTest {
 		Date date = DateUtil.string2Date("2018-01-31 18:23:54");
 		System.out.println(date);
 	}
+	
+	
+	@Test
+	public void unixtime2DateTest() {
+		Long time = 1518445999260l;
+					
+		Date date = DateUtil.unixtime2Date(time);
+		
+		System.out.println(date);
+	}
 
 }

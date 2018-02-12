@@ -1,7 +1,7 @@
 package com.lin.vo;
 
 /**
- * bilibili已完结动漫合集Model
+ * bilibili已完结动漫合集VO
  * 
  * @author god
  *
