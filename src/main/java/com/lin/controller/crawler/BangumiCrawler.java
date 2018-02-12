@@ -21,7 +21,7 @@ public class BangumiCrawler extends AbstractCrawler {
 
 	@Override
 	public void crawl() {
-		String[] strings = SearchUrlUtil.getUrl(SearchUrlUtil.url4bangumi, PageNum.BANGIMI.getPageNum());
+		String[] strings = SearchUrlUtil.getUrls(SearchUrlUtil.url4bangumi, PageNum.BANGIMI.getPageNum());
 
 		Spider.create(new BiliBili_bangumi_api())
 			.addUrl(strings)
