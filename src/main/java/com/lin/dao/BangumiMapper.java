@@ -21,4 +21,8 @@ public interface BangumiMapper {
 	int updateByPrimaryKey(Bangumi record);
 
 	int insertByBatch(List<Bangumi> recordList);
+	
+	int updateBySeasonIdSelective(String seasonId);
+	
+	List<Bangumi> selectAllSeasonId();
 }

@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.alibaba.fastjson.JSON;
 import com.lin.dao.AnimeMapper;
 import com.lin.model.Anime;
-import com.lin.service.BiliBili_anime_api;
+import com.lin.service.AnimeAPIPageProcessor;
 import com.lin.utils.Date4SearchUrlUtil;
 import com.lin.vo.AnimeVO;
 
@@ -22,7 +22,7 @@ public class BiliBili_anime_api_Test {
 	public void test4all() {
 		String[] strings = Date4SearchUrlUtil.getUrls();
 		
-		Spider.create(new BiliBili_anime_api())
+		Spider.create(new AnimeAPIPageProcessor())
 				.addUrl(strings)
 				.addPipeline(new FilePipeline("/data"))
 				.thread(4).run();
@@ -31,7 +31,7 @@ public class BiliBili_anime_api_Test {
 	@Ignore
 	@Test
 	public void test4api() {		
-		Spider.create(new BiliBili_anime_api())
+		Spider.create(new AnimeAPIPageProcessor())
 				.addUrl("https://s.search.bilibili.com/cate/search?main_ver=v3&search_type=video&view_type=hot_rank&cate_id=32&pagesize=40&jsonp=jsonp&time_from=20171201&time_to=20180208")
 				.addPipeline(new FilePipeline("/data"))
 				.thread(4).run();

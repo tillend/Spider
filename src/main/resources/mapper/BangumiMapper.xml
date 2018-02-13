@@ -26,9 +26,11 @@
 		<result column="week" property="week" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		id, favorites, play, coins, video_review, title, url, update_time,
+		id, favorites, play, coins, video_review, title, url,
+		update_time,
 		evaluate, season_id,
-		pub_time, total_count, pub_string, update_pattern, is_finish, newest_ep_index,
+		pub_time, total_count, pub_string,
+		update_pattern, is_finish, newest_ep_index,
 		cover,
 		season_status, week
 	</sql>
@@ -40,26 +42,33 @@
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from bangumi
+		delete from
+		bangumi
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.lin.model.Bangumi">
-		insert into bangumi (id, favorites, play,
+		insert into bangumi (id,
+		favorites, play,
 		coins, video_review, title,
 		url, update_time, evaluate,
 		season_id, pub_time, total_count,
-		pub_string, update_pattern, is_finish,
+		pub_string, update_pattern,
+		is_finish,
 		newest_ep_index, cover, season_status,
 		week)
-		values (#{id,jdbcType=INTEGER}, #{favorites,jdbcType=BIGINT},
+		values
+		(#{id,jdbcType=INTEGER}, #{favorites,jdbcType=BIGINT},
 		#{play,jdbcType=BIGINT},
-		#{coins,jdbcType=BIGINT}, #{videoReview,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR},
+		#{coins,jdbcType=BIGINT},
+		#{videoReview,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR},
 		#{url,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR},
 		#{evaluate,jdbcType=VARCHAR},
-		#{seasonId,jdbcType=VARCHAR}, #{pubTime,jdbcType=TIMESTAMP}, #{totalCount,jdbcType=INTEGER},
+		#{seasonId,jdbcType=VARCHAR},
+		#{pubTime,jdbcType=TIMESTAMP}, #{totalCount,jdbcType=INTEGER},
 		#{pubString,jdbcType=VARCHAR}, #{updatePattern,jdbcType=VARCHAR},
 		#{isFinish,jdbcType=VARCHAR},
-		#{newestEpIndex,jdbcType=VARCHAR}, #{cover,jdbcType=VARCHAR}, #{seasonStatus,jdbcType=VARCHAR},
+		#{newestEpIndex,jdbcType=VARCHAR},
+		#{cover,jdbcType=VARCHAR}, #{seasonStatus,jdbcType=VARCHAR},
 		#{week,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.lin.model.Bangumi">
@@ -245,24 +254,35 @@
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.lin.model.Bangumi">
 		update bangumi
-		set favorites = #{favorites,jdbcType=BIGINT},
-		play = #{play,jdbcType=BIGINT},
+		set
+		favorites = #{favorites,jdbcType=BIGINT},
+		play =
+		#{play,jdbcType=BIGINT},
 		coins = #{coins,jdbcType=BIGINT},
-		video_review = #{videoReview,jdbcType=BIGINT},
+		video_review
+		= #{videoReview,jdbcType=BIGINT},
 		title = #{title,jdbcType=VARCHAR},
 		url = #{url,jdbcType=VARCHAR},
-		update_time = #{updateTime,jdbcType=VARCHAR},
-		evaluate = #{evaluate,jdbcType=VARCHAR},
+		update_time =
+		#{updateTime,jdbcType=VARCHAR},
+		evaluate =
+		#{evaluate,jdbcType=VARCHAR},
 		season_id = #{seasonId,jdbcType=VARCHAR},
 		pub_time = #{pubTime,jdbcType=TIMESTAMP},
-		total_count = #{totalCount,jdbcType=INTEGER},
-		pub_string = #{pubString,jdbcType=VARCHAR},
-		update_pattern = #{updatePattern,jdbcType=VARCHAR},
-		is_finish = #{isFinish,jdbcType=VARCHAR},
-		newest_ep_index = #{newestEpIndex,jdbcType=VARCHAR},
+		total_count =
+		#{totalCount,jdbcType=INTEGER},
+		pub_string =
+		#{pubString,jdbcType=VARCHAR},
+		update_pattern =
+		#{updatePattern,jdbcType=VARCHAR},
+		is_finish =
+		#{isFinish,jdbcType=VARCHAR},
+		newest_ep_index =
+		#{newestEpIndex,jdbcType=VARCHAR},
 		cover = #{cover,jdbcType=VARCHAR},
 		season_status = #{seasonStatus,jdbcType=VARCHAR},
-		week = #{week,jdbcType=VARCHAR}
+		week =
+		#{week,jdbcType=VARCHAR}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 
@@ -272,17 +292,21 @@
 		url, update_time, evaluate,
 		season_id, pub_time, total_count,
 		pub_string, update_pattern, is_finish,
-		newest_ep_index, cover, season_status,
+		newest_ep_index, cover,
+		season_status,
 		week)
 		values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{item.id,jdbcType=INTEGER}, #{item.favorites,jdbcType=BIGINT}, #{item.play,jdbcType=BIGINT},
+			(#{item.id,jdbcType=INTEGER},
+			#{item.favorites,jdbcType=BIGINT}, #{item.play,jdbcType=BIGINT},
 			#{item.coins,jdbcType=BIGINT}, #{item.videoReview,jdbcType=BIGINT},
 			#{item.title,jdbcType=VARCHAR},
-			#{item.url,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=VARCHAR},
+			#{item.url,jdbcType=VARCHAR},
+			#{item.updateTime,jdbcType=VARCHAR},
 			#{item.evaluate,jdbcType=VARCHAR},
-			#{item.seasonId,jdbcType=VARCHAR}, #{item.pubTime,jdbcType=TIMESTAMP},
+			#{item.seasonId,jdbcType=VARCHAR},
+			#{item.pubTime,jdbcType=TIMESTAMP},
 			#{item.totalCount,jdbcType=INTEGER},
 			#{item.pubString,jdbcType=VARCHAR},
 			#{item.updatePattern,jdbcType=VARCHAR},
@@ -293,4 +317,70 @@
 			#{item.week,jdbcType=VARCHAR})
 		</foreach>
 	</insert>
+
+	<update id="updateBySeasonIdSelective" parameterType="com.lin.model.Bangumi">
+		update bangumi
+		<set>
+			<if test="favorites != null">
+				favorites = #{favorites,jdbcType=BIGINT},
+			</if>
+			<if test="play != null">
+				play = #{play,jdbcType=BIGINT},
+			</if>
+			<if test="coins != null">
+				coins = #{coins,jdbcType=BIGINT},
+			</if>
+			<if test="videoReview != null">
+				video_review = #{videoReview,jdbcType=BIGINT},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null">
+				url = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=VARCHAR},
+			</if>
+			<if test="evaluate != null">
+				evaluate = #{evaluate,jdbcType=VARCHAR},
+			</if>
+			<if test="seasonId != null">
+				season_id = #{seasonId,jdbcType=VARCHAR},
+			</if>
+			<if test="pubTime != null">
+				pub_time = #{pubTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="totalCount != null">
+				total_count = #{totalCount,jdbcType=INTEGER},
+			</if>
+			<if test="pubString != null">
+				pub_string = #{pubString,jdbcType=VARCHAR},
+			</if>
+			<if test="updatePattern != null">
+				update_pattern = #{updatePattern,jdbcType=VARCHAR},
+			</if>
+			<if test="isFinish != null">
+				is_finish = #{isFinish,jdbcType=VARCHAR},
+			</if>
+			<if test="newestEpIndex != null">
+				newest_ep_index = #{newestEpIndex,jdbcType=VARCHAR},
+			</if>
+			<if test="cover != null">
+				cover = #{cover,jdbcType=VARCHAR},
+			</if>
+			<if test="seasonStatus != null">
+				season_status = #{seasonStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="week != null">
+				week = #{week,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where season_id = #{seasonId,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectAllSeasonId" resultMap="BaseResultMap">
+		select season_id
+		from bangumi 
+	</select>
 </mapper>
