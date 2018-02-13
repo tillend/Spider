@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import com.lin.dao.BangumiMapper;
 import com.lin.model.Bangumi;
-import com.lin.service.BangumiPageProcessor;
-import com.lin.service.pipeline.BangumiListDaoPipeline;
+import com.lin.service.SeasonInfoPageProcessor;
+import com.lin.service.pipeline.SeasonInfoDaoPipeline;
 import com.lin.utils.ApplicationContextUtil;
 import com.lin.utils.SearchUrlUtil;
 
@@ -23,10 +23,10 @@ public class SeasonInfoCrawler implements AbstractCrawler {
 
 	@Override
 	public void crawl(String[] strings) {
-		Spider.create(new BangumiPageProcessor())
+		Spider.create(new SeasonInfoPageProcessor())
 			.addUrl(strings)
 			.thread(4)
-			.addPipeline(new BangumiListDaoPipeline())
+			.addPipeline(new SeasonInfoDaoPipeline())
 			.run();
 	}
 	

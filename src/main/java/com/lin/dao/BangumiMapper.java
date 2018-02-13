@@ -22,7 +22,7 @@ public interface BangumiMapper {
 
 	int insertByBatch(List<Bangumi> recordList);
 	
-	int updateBySeasonIdSelective(String seasonId);
+	int updateBySeasonIdSelective(Bangumi record);
 	
 	List<Bangumi> selectAllSeasonId();
 }

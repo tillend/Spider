@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 import com.lin.dao.BangumiMapper;
 import com.lin.model.Bangumi;
 import com.lin.utils.ApplicationContextUtil;
-import com.lin.utils.DateUtil;
-import com.lin.utils.StringUtil;
 import com.lin.vo.BangumiVO;
 
 import us.codecraft.webmagic.ResultItems;

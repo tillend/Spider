@@ -11,7 +11,9 @@ public class SearchUrlUtil {
 			+ "&index_type=1&index_sort=0&quarter=0"
 			+ "&page=%d";
 	
-	public static String url4seasonInfo = "https://bangumi.bilibili.com/jsonp/seasoninfo/%d.ver?jsonp=jsonp";
+	//callback为必传参数
+	public static String url4seasonInfo = "https://bangumi.bilibili.com/jsonp/seasoninfo/%s.ver?"
+			+ "callback=seasonListCallback&jsonp=jsonp";
 	
 	/**
 	 * 已知需爬取页数时的url拼接

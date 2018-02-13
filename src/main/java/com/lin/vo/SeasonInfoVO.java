@@ -11,6 +11,8 @@ public class SeasonInfoVO {
 
 	private String season_id;
 
+	private String evaluate;
+
 	public String getPlay_count() {
 		return play_count;
 	}
@@ -49,6 +51,14 @@ public class SeasonInfoVO {
 
 	public void setSeason_id(String season_id) {
 		this.season_id = season_id;
+	}
+
+	public String getEvaluate() {
+		return evaluate;
+	}
+
+	public void setEvaluate(String evaluate) {
+		this.evaluate = evaluate;
 	}
 
 }

@@ -345,9 +345,6 @@
 			<if test="evaluate != null">
 				evaluate = #{evaluate,jdbcType=VARCHAR},
 			</if>
-			<if test="seasonId != null">
-				season_id = #{seasonId,jdbcType=VARCHAR},
-			</if>
 			<if test="pubTime != null">
 				pub_time = #{pubTime,jdbcType=TIMESTAMP},
 			</if>

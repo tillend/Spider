@@ -19,7 +19,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class AnimeAPIPageProcessor implements PageProcessor {
 	private Logger logger = Logger.getLogger(getClass());
 
-	private Site site = Site.me().setDomain("bilibili.com").setRetryTimes(3);
+	private Site site = Site.me().setDomain("bilibili.com").setRetryTimes(3).setCharset("UTF-8");
 
 	@Override
 	public void process(Page page) {
