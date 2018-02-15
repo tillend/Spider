@@ -8,7 +8,7 @@ import com.lin.service.BangumiPageProcessor;
 import com.lin.service.pipeline.BangumiListDaoPipeline;
 import com.lin.utils.ApplicationContextUtil;
 import com.lin.utils.SearchUrlUtil;
-import com.lin.utils.type.PageNum;
+import com.lin.utils.common.PageNum;
 
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.FilePipeline;

@@ -1,5 +1,5 @@
 
-package com.lin.utils.type;
+package com.lin.utils.common;
 
 /**
  * 页数枚举
