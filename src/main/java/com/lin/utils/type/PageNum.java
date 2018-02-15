@@ -8,7 +8,8 @@ package com.lin.utils.type;
  */
 public enum PageNum {
 	
-	BANGIMI(151);
+	BANGIMI(151),
+	BLOG_EXPERT(131);
 	
 	private int pageNum;
 	

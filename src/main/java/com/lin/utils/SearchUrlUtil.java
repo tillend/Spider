@@ -17,6 +17,8 @@ public class SearchUrlUtil {
 	
 	public static String url4blogExpert = "http://blog.csdn.net/peoplelist.html?channelid=0&page=%d";
 	
+	public static String url4blogList = "http://blog.csdn.net/%s/article/list/";
+	
 	/**
 	 * 已知需爬取页数时的url拼接
 	 * @param originUrl
@@ -42,6 +44,10 @@ public class SearchUrlUtil {
 	 * @return
 	 */
 	public static String getUrlbyId(String originUrl, int id) {
+		return String.format(originUrl, id);
+	}
+
+	public static String getUrlbyId(String originUrl, String id) {
 		return String.format(originUrl, id);
 	}
 	

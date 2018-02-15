@@ -1,5 +1,8 @@
 package com.lin.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringUtil {
 	
 	public static Long string2long(String s) {
@@ -30,6 +33,15 @@ public class StringUtil {
 		} else {
 			return null;
 		}
+	}
+
+	// 获取一个字符串中的数字部分，剔除掉不是数字的
+	public static String getStringPureNumber(String str) {
+		Pattern pattern = Pattern.compile("[^0-9]");
+		Matcher matcher = pattern.matcher(str);
+		if (matcher.replaceAll("").equals(""))
+			return -1 + "";
+		return matcher.replaceAll("");
 	}
 
 }

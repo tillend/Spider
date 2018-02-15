@@ -8,6 +8,7 @@ import com.lin.service.BlogExpertPageProcessor;
 import com.lin.service.pipeline.BlogExpertListDaoPipeline;
 import com.lin.utils.ApplicationContextUtil;
 import com.lin.utils.SearchUrlUtil;
+import com.lin.utils.type.PageNum;
 
 import us.codecraft.webmagic.Spider;
 
@@ -27,7 +28,7 @@ public class BlogExpertCrawler implements AbstractCrawler {
 	
 	@Override
 	public String[] buildUrl() {
-		String[] strings = SearchUrlUtil.getUrls(SearchUrlUtil.url4blogExpert, 131);
+		String[] strings = SearchUrlUtil.getUrls(SearchUrlUtil.url4blogExpert, PageNum.BLOG_EXPERT.getPageNum());
 		return strings;
 	}
 
