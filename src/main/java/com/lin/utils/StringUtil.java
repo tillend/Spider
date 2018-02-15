@@ -2,11 +2,19 @@ package com.lin.utils;
 
 public class StringUtil {
 	
-	public static Long long2String(String s) {
+	public static Long string2long(String s) {
 		try {
 			return Long.parseLong(s);
 		} catch(NumberFormatException e) {
 			return 0l;
+		}
+	}
+	
+	public static int string2int(String s) {
+		try {
+			return Integer.parseInt(s);
+		} catch(NumberFormatException e) {
+			return 0;
 		}
 	}
 	

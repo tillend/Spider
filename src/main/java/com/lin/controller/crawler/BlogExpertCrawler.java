@@ -5,10 +5,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.lin.service.BlogExpertPageProcessor;
-import com.lin.service.pipeline.BangumiListDaoPipeline;
+import com.lin.service.pipeline.BlogExpertListDaoPipeline;
 import com.lin.utils.ApplicationContextUtil;
 import com.lin.utils.SearchUrlUtil;
-import com.lin.utils.type.PageNum;
 
 import us.codecraft.webmagic.Spider;
 
@@ -21,14 +20,14 @@ public class BlogExpertCrawler implements AbstractCrawler {
 	public void crawl(String[] strings) {
 		Spider.create(new BlogExpertPageProcessor())
 			.addUrl(strings)
-			.thread(1)
-			.addPipeline(null)
+			.thread(4)
+			.addPipeline(new BlogExpertListDaoPipeline())
 			.run();
 	}
 	
 	@Override
 	public String[] buildUrl() {
-		String[] strings = new String[] {SearchUrlUtil.url4blogExpert};
+		String[] strings = SearchUrlUtil.getUrls(SearchUrlUtil.url4blogExpert, 131);
 		return strings;
 	}
 

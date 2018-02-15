@@ -24,7 +24,9 @@ public class BlogExpertPageProcessor implements PageProcessor {
 
 	public void process(Page page) {
 		//TODO Selectable的链式抽取页码中url,加入至爬取列表中
-		 
+		//初始爬取url已包含页码信息
+//		List<String> urls = page.getHtml().css("div.page_nav").links().regex(".*/peoplelist.html\\?channelid=0.*").all();
+//		page.addTargetRequests(urls);
 		
 		List<BlogExpertVO> list = new ArrayList<>();
 

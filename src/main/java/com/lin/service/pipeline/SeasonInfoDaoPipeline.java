@@ -29,10 +29,10 @@ public class SeasonInfoDaoPipeline implements Pipeline {
 		 */
 
 		record.setSeasonId(seasonInfo.getSeason_id());
-		record.setPlay(StringUtil.long2String(seasonInfo.getPlay_count()));
-		record.setVideoReview(StringUtil.long2String(seasonInfo.getDanmaku_count()));
+		record.setPlay(StringUtil.string2long(seasonInfo.getPlay_count()));
+		record.setVideoReview(StringUtil.string2long(seasonInfo.getDanmaku_count()));
 		record.setPubTime(DateUtil.string2Date(seasonInfo.getPub_time()));
-		record.setCoins(StringUtil.long2String(seasonInfo.getCoins()));
+		record.setCoins(StringUtil.string2long(seasonInfo.getCoins()));
 		record.setEvaluate(seasonInfo.getEvaluate());
 
 		ApplicationContext applicationContext = ApplicationContextUtil.getSingleton().getContext();

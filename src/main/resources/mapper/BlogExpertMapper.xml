@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.BlogExpertMapper">
+	<resultMap id="BaseResultMap" type="com.lin.model.BlogExpert">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="bloger_id" property="blogerId" jdbcType="VARCHAR" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="article_num" property="articleNum" jdbcType="INTEGER" />
+		<result column="read_num" property="readNum" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="location" property="location" jdbcType="VARCHAR" />
+		<result column="job" property="job" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, bloger_id, url, article_num, read_num, name, location, job
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from blog_expert
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from blog_expert
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.lin.model.BlogExpert">
+		insert into blog_expert (id, bloger_id, url,
+		article_num, read_num, name,
+		location, job)
+		values (#{id,jdbcType=INTEGER}, #{blogerId,jdbcType=VARCHAR},
+		#{url,jdbcType=VARCHAR},
+		#{articleNum,jdbcType=INTEGER}, #{readNum,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+		#{location,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.lin.model.BlogExpert">
+		insert into blog_expert
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="blogerId != null">
+				bloger_id,
+			</if>
+			<if test="url != null">
+				url,
+			</if>
+			<if test="articleNum != null">
+				article_num,
+			</if>
+			<if test="readNum != null">
+				read_num,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="location != null">
+				location,
+			</if>
+			<if test="job != null">
+				job,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="blogerId != null">
+				#{blogerId,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null">
+				#{url,jdbcType=VARCHAR},
+			</if>
+			<if test="articleNum != null">
+				#{articleNum,jdbcType=INTEGER},
+			</if>
+			<if test="readNum != null">
+				#{readNum,jdbcType=BIGINT},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="location != null">
+				#{location,jdbcType=VARCHAR},
+			</if>
+			<if test="job != null">
+				#{job,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.lin.model.BlogExpert">
+		update blog_expert
+		<set>
+			<if test="blogerId != null">
+				bloger_id = #{blogerId,jdbcType=VARCHAR},
+			</if>
+			<if test="url != null">
+				url = #{url,jdbcType=VARCHAR},
+			</if>
+			<if test="articleNum != null">
+				article_num = #{articleNum,jdbcType=INTEGER},
+			</if>
+			<if test="readNum != null">
+				read_num = #{readNum,jdbcType=BIGINT},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="location != null">
+				location = #{location,jdbcType=VARCHAR},
+			</if>
+			<if test="job != null">
+				job = #{job,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.lin.model.BlogExpert">
+		update blog_expert
+		set bloger_id = #{blogerId,jdbcType=VARCHAR},
+		url = #{url,jdbcType=VARCHAR},
+		article_num = #{articleNum,jdbcType=INTEGER},
+		read_num = #{readNum,jdbcType=BIGINT},
+		name = #{name,jdbcType=VARCHAR},
+		location = #{location,jdbcType=VARCHAR},
+		job = #{job,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<insert id="insertByBatch" parameterType="java.util.List">
+		insert into blog_expert (id, bloger_id, url,
+		article_num, read_num, name,
+		location, job)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id,jdbcType=INTEGER}, #{item.blogerId,jdbcType=VARCHAR}, #{item.url,jdbcType=VARCHAR},
+			#{item.articleNum,jdbcType=INTEGER}, #{item.readNum,jdbcType=BIGINT},
+			#{item.name,jdbcType=VARCHAR},
+			#{item.location,jdbcType=VARCHAR}, #{item.job,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+</mapper>

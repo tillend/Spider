@@ -39,7 +39,7 @@ public class AnimeListDaoPipeline implements Pipeline {
 			record.setFavorites(t.getFavorites());
 			record.setMid(t.getMid());
 			record.setPic(t.getPic());
-			record.setPlay(StringUtil.long2String(t.getPlay()));
+			record.setPlay(StringUtil.string2long(t.getPlay()));
 			record.setPubdate(DateUtil.string2Date(t.getPubdate()));
 			record.setReview(t.getReview());
 			record.setSenddate(t.getSenddate());

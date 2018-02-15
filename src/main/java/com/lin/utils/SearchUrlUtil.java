@@ -15,7 +15,7 @@ public class SearchUrlUtil {
 	public static String url4seasonInfo = "https://bangumi.bilibili.com/jsonp/seasoninfo/%s.ver?"
 			+ "callback=seasonListCallback&jsonp=jsonp";
 	
-	public static String url4blogExpert = "http://blog.csdn.net/peoplelist.html?channelid=0&page=1";
+	public static String url4blogExpert = "http://blog.csdn.net/peoplelist.html?channelid=0&page=%d";
 	
 	/**
 	 * 已知需爬取页数时的url拼接
