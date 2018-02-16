@@ -43,5 +43,16 @@ public class StringUtil {
 			return -1 + "";
 		return matcher.replaceAll("");
 	}
+	
+	// 获取csdn博客列表中的blogerId
+	public static String getIdfromUrl(String str) {
+		str = str.replace("http://blog.csdn.net/", "");
+		int pos = str.indexOf("/", 0);
+		if (pos != -1) {
+			return str.substring(0, pos);
+		} else {
+			return null;
+		}
+	}
 
 }
