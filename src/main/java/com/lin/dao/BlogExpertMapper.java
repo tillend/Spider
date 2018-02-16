@@ -18,4 +18,6 @@ public interface BlogExpertMapper {
     int updateByPrimaryKey(BlogExpert record);
     
     int insertByBatch(List<BlogExpert> recordList);
+    
+    List<BlogExpert> selectAllBlogerId();
 }

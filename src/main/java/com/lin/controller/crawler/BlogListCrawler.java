@@ -1,9 +1,14 @@
 package com.lin.controller.crawler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.lin.dao.BlogExpertMapper;
+import com.lin.model.BlogExpert;
 import com.lin.service.BlogListPageProcessor;
 import com.lin.utils.ApplicationContextUtil;
 import com.lin.utils.SearchUrlUtil;
@@ -11,7 +16,6 @@ import com.lin.utils.SearchUrlUtil;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.scheduler.QueueScheduler;
-import us.codecraft.webmagic.scheduler.component.HashSetDuplicateRemover;
 
 @Component
 public class BlogListCrawler implements AbstractCrawler {
@@ -22,7 +26,7 @@ public class BlogListCrawler implements AbstractCrawler {
 	public void crawl(String[] strings) {
 		Spider.create(new BlogListPageProcessor())
 			.addUrl(strings)
-			.thread(1)
+			.thread(5)
 			.addPipeline(new ConsolePipeline())
 			.setScheduler(new QueueScheduler())
 			.run();
@@ -30,8 +34,19 @@ public class BlogListCrawler implements AbstractCrawler {
 	
 	@Override
 	public String[] buildUrl() {
-		String[] strings = new String[] {SearchUrlUtil.getUrlbyId(SearchUrlUtil.url4blogList, "why_still_confused")};
-		return strings;
+		//从数据库中获取页面id列表
+		BlogExpertMapper mapper = getBean(BlogExpertMapper.class);
+		List<BlogExpert> respList = mapper.selectAllBlogerId();
+		
+		//拼接为有效的url
+		List<String> list = new ArrayList<String>();
+		for(BlogExpert b: respList) {
+			String url = String.format(SearchUrlUtil.url4blogList, b.getBlogerId());
+			list.add(url);
+		}
+		
+		String[] temp = new String[list.size()];
+		return list.toArray(temp);
 	}
 
 	public static void main(String[] args) {

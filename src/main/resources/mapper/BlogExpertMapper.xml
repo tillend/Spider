@@ -12,7 +12,8 @@
 		<result column="job" property="job" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		id, bloger_id, url, article_num, read_num, name, location, job
+		id, bloger_id, url, article_num, read_num, name, location,
+		job
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
@@ -22,16 +23,20 @@
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from blog_expert
+		delete from
+		blog_expert
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.lin.model.BlogExpert">
-		insert into blog_expert (id, bloger_id, url,
+		insert into blog_expert (id,
+		bloger_id, url,
 		article_num, read_num, name,
 		location, job)
-		values (#{id,jdbcType=INTEGER}, #{blogerId,jdbcType=VARCHAR},
+		values
+		(#{id,jdbcType=INTEGER}, #{blogerId,jdbcType=VARCHAR},
 		#{url,jdbcType=VARCHAR},
-		#{articleNum,jdbcType=INTEGER}, #{readNum,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+		#{articleNum,jdbcType=INTEGER},
+		#{readNum,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
 		#{location,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR})
 	</insert>
 	<insert id="insertSelective" parameterType="com.lin.model.BlogExpert">
@@ -119,7 +124,8 @@
 	<update id="updateByPrimaryKey" parameterType="com.lin.model.BlogExpert">
 		update blog_expert
 		set bloger_id = #{blogerId,jdbcType=VARCHAR},
-		url = #{url,jdbcType=VARCHAR},
+		url =
+		#{url,jdbcType=VARCHAR},
 		article_num = #{articleNum,jdbcType=INTEGER},
 		read_num = #{readNum,jdbcType=BIGINT},
 		name = #{name,jdbcType=VARCHAR},
@@ -130,15 +136,24 @@
 
 	<insert id="insertByBatch" parameterType="java.util.List">
 		insert into blog_expert (id, bloger_id, url,
-		article_num, read_num, name,
+		article_num, read_num,
+		name,
 		location, job)
 		values
 		<foreach collection="list" item="item" index="index"
 			separator=",">
-			(#{item.id,jdbcType=INTEGER}, #{item.blogerId,jdbcType=VARCHAR}, #{item.url,jdbcType=VARCHAR},
+			(#{item.id,jdbcType=INTEGER},
+			#{item.blogerId,jdbcType=VARCHAR}, #{item.url,jdbcType=VARCHAR},
 			#{item.articleNum,jdbcType=INTEGER}, #{item.readNum,jdbcType=BIGINT},
 			#{item.name,jdbcType=VARCHAR},
-			#{item.location,jdbcType=VARCHAR}, #{item.job,jdbcType=VARCHAR})
+			#{item.location,jdbcType=VARCHAR},
+			#{item.job,jdbcType=VARCHAR})
 		</foreach>
 	</insert>
+
+	<select id="selectAllBlogerId" resultMap="BaseResultMap">
+		select bloger_id
+		from
+		blog_expert
+	</select>
 </mapper>
