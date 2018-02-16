@@ -19,6 +19,8 @@ public class SearchUrlUtil {
 	
 	public static String url4blogList = "http://blog.csdn.net/%s/article/list/";
 	
+	public static String url4csdn = "http://blog.csdn.net%s";
+	
 	/**
 	 * 已知需爬取页数时的url拼接
 	 * @param originUrl

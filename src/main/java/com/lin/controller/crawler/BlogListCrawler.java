@@ -10,6 +10,8 @@ import com.lin.utils.SearchUrlUtil;
 
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
+import us.codecraft.webmagic.scheduler.QueueScheduler;
+import us.codecraft.webmagic.scheduler.component.HashSetDuplicateRemover;
 
 @Component
 public class BlogListCrawler implements AbstractCrawler {
@@ -22,12 +24,13 @@ public class BlogListCrawler implements AbstractCrawler {
 			.addUrl(strings)
 			.thread(1)
 			.addPipeline(new ConsolePipeline())
+			.setScheduler(new QueueScheduler())
 			.run();
 	}
 	
 	@Override
 	public String[] buildUrl() {
-		String[] strings = new String[] {SearchUrlUtil.getUrlbyId(SearchUrlUtil.url4blogList, "wgyscsf")};
+		String[] strings = new String[] {SearchUrlUtil.getUrlbyId(SearchUrlUtil.url4blogList, "why_still_confused")};
 		return strings;
 	}
 
