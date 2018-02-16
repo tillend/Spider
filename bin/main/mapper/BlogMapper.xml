@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.dao.BlogMapper">
+	<resultMap id="BaseResultMap" type="com.lin.model.Blog">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="article_id" property="articleId" jdbcType="INTEGER" />
+		<result column="link_title" property="linkTitle" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+		<result column="view_num" property="viewNum" jdbcType="BIGINT" />
+		<result column="comment_num" property="commentNum" jdbcType="INTEGER" />
+		<result column="detailUrl" property="detailurl" jdbcType="VARCHAR" />
+		<result column="summary" property="summary" jdbcType="VARCHAR" />
+		<result column="bloger_id" property="blogerId" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, article_id, link_title, type, publish_time, view_num, comment_num,
+		detailUrl,
+		summary, bloger_id
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from blog
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from blog
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.lin.model.Blog">
+		insert into blog (id, article_id, link_title,
+		type, publish_time, view_num,
+		comment_num, detailUrl, summary,
+		bloger_id)
+		values (#{id,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER},
+		#{linkTitle,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, #{viewNum,jdbcType=BIGINT},
+		#{commentNum,jdbcType=INTEGER}, #{detailurl,jdbcType=VARCHAR},
+		#{summary,jdbcType=VARCHAR},
+		#{blogerId,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.lin.model.Blog">
+		insert into blog
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="articleId != null">
+				article_id,
+			</if>
+			<if test="linkTitle != null">
+				link_title,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="publishTime != null">
+				publish_time,
+			</if>
+			<if test="viewNum != null">
+				view_num,
+			</if>
+			<if test="commentNum != null">
+				comment_num,
+			</if>
+			<if test="detailurl != null">
+				detailUrl,
+			</if>
+			<if test="summary != null">
+				summary,
+			</if>
+			<if test="blogerId != null">
+				bloger_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="articleId != null">
+				#{articleId,jdbcType=INTEGER},
+			</if>
+			<if test="linkTitle != null">
+				#{linkTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=VARCHAR},
+			</if>
+			<if test="publishTime != null">
+				#{publishTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="viewNum != null">
+				#{viewNum,jdbcType=BIGINT},
+			</if>
+			<if test="commentNum != null">
+				#{commentNum,jdbcType=INTEGER},
+			</if>
+			<if test="detailurl != null">
+				#{detailurl,jdbcType=VARCHAR},
+			</if>
+			<if test="summary != null">
+				#{summary,jdbcType=VARCHAR},
+			</if>
+			<if test="blogerId != null">
+				#{blogerId,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.lin.model.Blog">
+		update blog
+		<set>
+			<if test="articleId != null">
+				article_id = #{articleId,jdbcType=INTEGER},
+			</if>
+			<if test="linkTitle != null">
+				link_title = #{linkTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+			<if test="publishTime != null">
+				publish_time = #{publishTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="viewNum != null">
+				view_num = #{viewNum,jdbcType=BIGINT},
+			</if>
+			<if test="commentNum != null">
+				comment_num = #{commentNum,jdbcType=INTEGER},
+			</if>
+			<if test="detailurl != null">
+				detailUrl = #{detailurl,jdbcType=VARCHAR},
+			</if>
+			<if test="summary != null">
+				summary = #{summary,jdbcType=VARCHAR},
+			</if>
+			<if test="blogerId != null">
+				bloger_id = #{blogerId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.lin.model.Blog">
+		update blog
+		set article_id = #{articleId,jdbcType=INTEGER},
+		link_title = #{linkTitle,jdbcType=VARCHAR},
+		type = #{type,jdbcType=VARCHAR},
+		publish_time = #{publishTime,jdbcType=TIMESTAMP},
+		view_num = #{viewNum,jdbcType=BIGINT},
+		comment_num = #{commentNum,jdbcType=INTEGER},
+		detailUrl = #{detailurl,jdbcType=VARCHAR},
+		summary = #{summary,jdbcType=VARCHAR},
+		bloger_id = #{blogerId,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<insert id="insertByBatch" parameterType="java.util.List">
+		insert into blog (id, article_id, link_title,
+		type, publish_time, view_num,
+		comment_num, detailUrl, summary,
+		bloger_id)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.id,jdbcType=INTEGER}, #{item.articleId,jdbcType=INTEGER},
+			#{item.linkTitle,jdbcType=VARCHAR},
+			#{item.type,jdbcType=VARCHAR}, #{item.publishTime,jdbcType=TIMESTAMP},
+			#{item.viewNum,jdbcType=BIGINT},
+			#{item.commentNum,jdbcType=INTEGER}, #{item.detailurl,jdbcType=VARCHAR},
+			#{item.summary,jdbcType=VARCHAR},
+			#{item.blogerId,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+</mapper>
