@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 定时爬虫任务，每天凌晨0点执行一次 -->
+    <!-- 指向的是要执行的类 -->
+    <bean id="myJob" class="com.lin.controller.trigger.TestTrigger" />
+    
+    <bean id="myJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="myJob" />
+        </property>
+        <!-- 指向方法,这里的value是方法名称 -->
+        <property name="targetMethod">
+            <value>start</value>
+        </property>
+    </bean>
+    <bean id="myJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="myJobDetail" />
+        </property>
+        <!-- 多久执行,这里表示每天凌晨执行 -->
+        <property name="cronExpression">
+            <value>0 30-35 21 * * ? </value>
+        </property>
+    </bean>
+
+</beans>
