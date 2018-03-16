@@ -13,7 +13,7 @@ public class TestTrigger {
 		final BlogListCrawler jobCrawler = applicationContext.getBean(BlogListCrawler.class);
 
 //		String[] strings = jobCrawler.buildUrl();
-		String[] strings = new String[] {String.format(SearchUrlUtil.url4blogList, "112")};
+		String[] strings = new String[] {String.format(SearchUrlUtil.url4blogList, "why_still_confused")};
 		
 		jobCrawler.crawl(strings);
 	}

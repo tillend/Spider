@@ -22,7 +22,7 @@
         </property>
         <!-- 多久执行,这里表示每天凌晨执行 -->
         <property name="cronExpression">
-            <value>0 30-35 21 * * ? </value>
+            <value>0 40-45 21 * * ? </value>
         </property>
     </bean>
 
