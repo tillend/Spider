@@ -63,7 +63,7 @@ public class BlogListPageProcessor implements PageProcessor {
 			// 文章id
 			String articleId = StringUtil.getLastSlantContent(detailUrl);
 			// 文章标题
-			String linkTitle = s.xpath("//h3[@class='blog-title odd-overhidden bottom-dis-8']/tidyText()")
+			String linkTitle = s.xpath("//h3[@class='blog-title bottom-dis-8']/tidyText()")
 					.replace("置顶", "").toString().trim();
 			// 文章类型
 			String type = s.xpath("//div[@class='floatL tag']/tidyText()").toString();

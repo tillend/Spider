@@ -26,9 +26,8 @@ public class BlogListCrawler implements AbstractCrawler {
 	public void crawl(String[] strings) {
 		Spider.create(new BlogListPageProcessor())
 			.addUrl(strings)
-			.thread(5)
+			.thread(2)
 			.addPipeline(new ConsolePipeline())
-			.setScheduler(new QueueScheduler())
 			.run();
 	}
 	
